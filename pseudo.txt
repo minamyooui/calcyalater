@@ -1,0 +1,34 @@
+
+op logic
+  if no num1 
+    save num1
+    save op
+    set ref display to true
+  else if no num2
+    save num2
+    call operation
+    save op
+    save num1
+  
+
+
+equals
+  if no num1 and no num2
+    do nothing
+  else if no num2
+    save num2
+  call operation
+  
+operate
+  call correct op function
+  set opCalled to true
+  return result
+
+operation
+  call operate
+  set display to result
+  set num1, num2 and op to blank
+  set ref display to true
+
+
+
