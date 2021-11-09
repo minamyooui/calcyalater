@@ -96,7 +96,7 @@ function clearCalc() {
 }
 
 function equals() {
-  if (!num1 && !num2) {
+  if (!num1) {
     return;
   } else if (!num2) {
     num2 = display.textContent;
@@ -127,7 +127,7 @@ function main() {
   numbers.forEach(num => {
     num.addEventListener('click', updateDisplay);
   });
-  const clear = document.querySelector('#clear');
+  const clear = document.querySelector('#Delete');
   clear.addEventListener('click', clearCalc);
   const operators = document.querySelectorAll('.operator');
   operators.forEach(op => {
@@ -139,8 +139,21 @@ function main() {
   plusMinus.addEventListener('click', neg);
   const decimalButton = document.querySelector('#decimal');
   decimalButton.addEventListener('click', decimal);
-  const backspace = document.querySelector('#backspace');
+  const backspace = document.querySelector('#Backspace');
   backspace.addEventListener('click', del);
+  
+  window.addEventListener('keydown', keyboard);
+}
+
+function keyboard(e) {
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach(btn => {
+    if (btn.textContent == e.key) {
+      btn.click();
+    } else if (btn.id == e.key) {
+      btn.click();
+    }
+  });
 }
 
 main();
